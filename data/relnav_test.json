@@ -1,6 +1,6 @@
 {
   "pixels_per_meter": 12,
-  "vehicle_type": "Ant",
+  "vehicle_type": "instance.research.ants.Ant",
   "vehicles": [
     {
       "name": "RelNavAgent",

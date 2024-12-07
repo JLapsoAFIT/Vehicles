@@ -3,22 +3,22 @@
 	"color": [188, 236, 51],
 	"behaviorTree": [
 		{
-			"name": "behaviorFramework.arbiters.SimplePriority",
+			"name": "core.behaviorFramework.arbiters.SimplePriority",
 			"arbiter": true,
 			"weights": [ 0.9, 0.7, 0.3, 0.1 ],
 			"behaviorTree": [
 				{
-					"name": "Sample.behaviors.Love"
+					"name": "instance.courses.sample.behaviors.Love"
 				},
 				{
-					"name": "Sample.behaviors.AvoidObstacle",
+					"name": "instance.courses.sample.behaviors.AvoidObstacle",
 					"arbiter": false
 				},
 				{
-					"name": "Sample.behaviors.Wander"
+					"name": "instance.courses.sample.behaviors.Wander"
 				},
 				{
-					"name": "behaviorFramework.behaviors.NoOp",
+					"name": "core.behaviorFramework.behaviors.NoOp",
 					"arbiter": false,
 					"parameters": ["6", "10.3", "a string"]
 				}
