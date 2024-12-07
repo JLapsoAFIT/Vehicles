@@ -1,15 +1,15 @@
 {
   "pixels_per_meter": 10,
-  "vehicle_type": "instance.research.boid.Boid",
+  "vehicle_type": "Boid",
   "vehicles": [
     {
-      "name": "Boids",
+      "name": "boids",
       "position": [-5,-5],
       "draw_scan_lines": "true",
       "resource": "001"
     },
     {
-      "name": "Boids",
+      "name": "boids",
       "position": [-3,-5],
       "draw_scan_lines": "true",
       "resource": "002"

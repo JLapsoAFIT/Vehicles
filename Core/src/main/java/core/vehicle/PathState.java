@@ -113,7 +113,7 @@ public class PathState extends State {
     // Compass to Heading and Heading to Compass methods?
     public void dropAtHome( Home h ) {
         super.dropAtHome(h);
-        int dropPath[] = new int[50];
+        int[] dropPath = new int[50];
 
         endPathing();
         for (int i = 0; i < pathRIndex; i++)

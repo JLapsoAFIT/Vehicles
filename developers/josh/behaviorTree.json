@@ -1,0 +1,27 @@
+{
+  "behaviorTree": [
+    {
+      "behaviorTree": [
+        {
+          "name": "instance.courses.sample.behaviors.GotoRelNav",
+          "parameters": [
+            15.0,
+            0.0
+          ]
+        },
+        {
+          "name": "instance.courses.sample.behaviors.Wander"
+        }
+      ],
+      "arbiter": true,
+      "name": "core.behaviorFramework.arbiters.HighestActivation",
+      "weights": [
+        0.8,
+        0.2
+      ]
+    }
+  ],
+  "vehicleName": "Agent4",
+  "color": [215, 240, 50],
+  "state": "core.vehicle.PathState"
+}
