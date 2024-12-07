@@ -251,7 +251,7 @@ public class Vehicles extends SimulationFrame {
                 insertVehicle(vehicle, item);
             } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
                 // The name is likely a filename. Create a JSONVehicle and load the json file
-                String fileName = "data\\" + vehicleName + ".json";
+                String fileName = "data/" + vehicleName + ".json";
                 JSONVehicle vehicle = new JSONVehicle();
                 vehicle.initialize(this, fileName, vehicleType); // Halts on failure
                 insertVehicle(vehicle, item);
@@ -407,7 +407,7 @@ public class Vehicles extends SimulationFrame {
         {
             //Create Handler and Set Formatter
             FileHandler fh = new
-                FileHandler("logs\\vehicleLog"+dtf.format(now)+".csv",
+                FileHandler("logs/vehicleLog"+dtf.format(now)+".csv",
                 32000000, 20);
             fh.setFormatter(new SimpleFormatter());
             fh.setLevel(Level.FINE);
@@ -425,7 +425,7 @@ public class Vehicles extends SimulationFrame {
         }
 
         try {
-            String homeName = "logs\\homeLog"+dtf.format(now)+".csv";
+            String homeName = "logs/homeLog"+dtf.format(now)+".csv";
             homeLogStream = new PrintWriter( new FileOutputStream(homeName, true));
             homeLogStream.write("timestep,name,energy,vehicleCount,position_x,position_y" + "\n"); // writes header to csv file
         }
@@ -540,7 +540,7 @@ public class Vehicles extends SimulationFrame {
             System.exit(0);
         }
 
-        String filename = "data\\" + args[0]; //world3.json";
+        String filename = "data/" + args[0]; //world3.json";
 
         // Read in the JSON world file
         try (FileReader fileReader = new FileReader((filename))) {
