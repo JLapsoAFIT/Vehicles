@@ -24,7 +24,7 @@ Mouse click and drag moves the camera\
   "pixels_per_meter": 20, # Required Camera scaling critical for position
   "vehicles": [           # Required Array
     {
-      "name": "Sample.Callie",  # To load a class need full package name
+      "name": "instance.courses.sample.Callie",  # To load a class need full package name
       "position": [-5,-5],      # optional, default to random
       "draw_scan_lines": "true" # optional, default to false
       "home": [5,5]             # optional, default to N/A
@@ -72,30 +72,30 @@ Therefore, object locations are restricted into the range:
 
 Key binding for light and obstacle moving is limited to 1 through 5.
 
-##### Vehicles
+##### vehicles
 ```json
 {
 	"vehicleName": "Marie",       # Required
 	"color": [188, 236, 51],      # Optional, default CYAN
-    "state": "Sample.MyState",    # Optional, read compile time notes in MyNoOp
+    "state": "instance.courses.sample.MyState",    # Optional, read compile time notes in MyNoOp
 	"behaviorTree": [             # Required
 		{                         # Names must be full package paths
-			"name": "behaviorFramework.arbiters.SimplePriority",
+			"name": "instance.research.arbiters.behaviorFramework.SimplePriority",
 			"arbiter": true,      # This is an arbiter and has a sub-tree
 			"weights": [ 0.3, 0.7 ],
 			"behaviorTree": [
 				{
-					"name": "Sample.behaviors.Love"
+					"name": "instance.courses.behaviors.sample.Love"
 				},
 				{
 					"name": "behaviorFramework.behaviors.Wander"
 				} ,
 				{
-					"name": "Sample.behaviors.AvoidObstacle",
+					"name": "instance.courses.behaviors.sample.AvoidObstacle",
 					"arbiter": false    # Optional for behaviors only required for arbiters
 				},
 				{
-					"name": "behaviorFramework.behaviors.NoOp",
+					"name": "instance.research.behaviors.behaviorFramework.NoOp",
 					"parameters": ["6", "10.3", "a string"] # Optional
 				}
 			]
@@ -146,12 +146,12 @@ Several arbitration strategies are already present in the behaviorFactory.
 
 ##### Frame Reference
 
-![Vehicle Frames](images/VehicleFrames.png)
+![Vehicle Frames](developers/images/VehicleFrames.png)
 
 Black is World Frame. [0,0] is at the center.
 Green is Vehicle Frame. All SensedObjects are pre-transformed to be in this frame. Types include: "Home", "Obstacle", and "Food".
 
-##### Networked Vehicles
+##### Networked vehicles
 
 Networking leverages Apache ActiveMQ. See the user_guide.html file in the activeMQ docs folder for execution instructions. The server must be started prior to agents connecting.
 

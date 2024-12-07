@@ -2,7 +2,14 @@
 /out/
 /.idea/
 .idea
+build.gradle.kts
+gradle.properties
+settings.gradle.kts
 
 # Folder config file
 [Dd]esktop.ini
 
+/gradle/
+/gradlew
+/gradlew.bat
+/logs/

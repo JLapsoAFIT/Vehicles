@@ -1,74 +1,74 @@
 {
   "vehicleName": "Agent4",
   "color": [215, 240, 50],
-  "state": "Vehicles.PathState",
+  "state": "core.vehicle.PathState",
   "behaviorTree": [
     {
-      "name": "behaviorFramework.arbiters.Conditional",
+      "name": "core.behaviorFramework.arbiters.Conditional",
       "arbiter": true,
       "weights": [ 0.5, 0.5 ],
       "condition": "isHolding",
       "behaviorTree": [
         {
-          "name": "behaviorFramework.arbiters.Conditional",
+          "name": "core.behaviorFramework.arbiters.Conditional",
           "arbiter": true,
           "weights": [ 0.5, 0.5 ],
           "condition": "isAtHome",
           "behaviorTree": [
             {
-              "name": "Sample.behaviors.Drop"
+              "name": "instance.courses.sample.behaviors.Drop"
             },
             {
-              "name": "behaviorFramework.arbiters.HighestActivation",
+              "name": "core.behaviorFramework.arbiters.HighestActivation",
               "arbiter": true,
               "weights": [ 0.2, 0.1, 0.15, 0.05 ],
               "behaviorTree": [
                 {
-                  "name": "Sample.behaviors.GetUnstuck"
+                  "name": "instance.courses.sample.behaviors.GetUnstuck"
                 },
                 {
-                  "name": "Sample.behaviors.GotoX",
+                  "name": "instance.courses.sample.behaviors.GotoX",
                   "parameters": ["Home"]
                 },
                 {
-                  "name": "Sample.behaviors.AvoidObstacle"
+                  "name": "instance.courses.sample.behaviors.AvoidObstacle"
                 },
                 {
-                  "name": "Sample.behaviors.Wander"
+                  "name": "instance.courses.sample.behaviors.Wander"
                 }
               ]
             }
           ]
         },
         {
-          "name": "behaviorFramework.arbiters.SimplePriority",
+          "name": "core.behaviorFramework.arbiters.SimplePriority",
           "arbiter": true,
           "weights": [ 0.5, 0.5 ],
           "behaviorTree": [
             {
-              "name": "Sample.behaviors.PickUp",
+              "name": "instance.courses.sample.behaviors.PickUp",
               "parameters": ["Food"]
             },
             {
-              "name": "behaviorFramework.arbiters.HighestActivation",
+              "name": "core.behaviorFramework.arbiters.HighestActivation",
               "arbiter": true,
               "weights": [ 0.25, 0.2, 0.1, 0.15, 0.05 ],
               "behaviorTree": [
                 {
-                  "name": "Sample.behaviors.GetUnstuck"
+                  "name": "instance.courses.sample.behaviors.GetUnstuck"
                 },
                 {
-                  "name": "Sample.behaviors.GotoX",
+                  "name": "instance.courses.sample.behaviors.GotoX",
                   "parameters": ["Food"]
                 },
                 {
-                  "name": "Sample.behaviors.FollowPath"
+                  "name": "instance.courses.sample.behaviors.FollowPath"
                 },
                 {
-                  "name": "Sample.behaviors.AvoidObstacle"
+                  "name": "instance.courses.sample.behaviors.AvoidObstacle"
                 },
                 {
-                  "name": "Sample.behaviors.Wander"
+                  "name": "instance.courses.sample.behaviors.Wander"
                 }
               ]
             }

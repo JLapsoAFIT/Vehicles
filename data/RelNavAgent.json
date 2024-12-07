@@ -1,19 +1,19 @@
 {
   "vehicleName": "Agent4",
   "color": [215, 240, 50],
-  "state": "Vehicles.PathState",
+  "state": "core.vehicle.PathState",
   "behaviorTree": [
     {
-      "name": "behaviorFramework.arbiters.HighestActivation",
+      "name": "core.behaviorFramework.arbiters.HighestActivation",
       "arbiter": true,
       "weights": [ 0.8, 0.2 ],
       "behaviorTree": [
         {
-          "name": "Sample.behaviors.GotoRelNav",
+          "name": "instance.courses.sample.behaviors.GotoRelNav",
           "parameters": ["15.0, 0.0"]
         },
         {
-          "name": "Sample.behaviors.Wander"
+          "name": "instance.courses.sample.behaviors.Wander"
         }
       ]
     }
