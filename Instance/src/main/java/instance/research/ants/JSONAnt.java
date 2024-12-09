@@ -2,12 +2,10 @@ package instance.research.ants;
 
 import core.vehicle.Action;
 import core.vehicle.State;
-import core.vehicle.Vehicles;
+import instance.Vehicles;
 import core.behaviorFramework.ArbitrationUnit;
 import core.behaviorFramework.Behavior;
 import core.behaviorFramework.CompositeBehavior;
-
-import core.framework.SimulationBody;
 
 import com.github.cliftonlabs.json_simple.*;
 

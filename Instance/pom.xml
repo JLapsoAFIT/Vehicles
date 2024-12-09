@@ -57,7 +57,7 @@
                         <archive>
                             <manifest>
                                 <mainClass>
-                                    core.vehicle.Vehicles
+                                    instance.Vehicles
                                 </mainClass>
                             </manifest>
                         </archive>

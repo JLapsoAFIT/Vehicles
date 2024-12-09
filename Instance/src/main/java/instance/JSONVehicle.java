@@ -1,10 +1,12 @@
-package core.vehicle;
+package instance;
 
 import core.behaviorFramework.ArbitrationUnit;
 import core.behaviorFramework.Behavior;
 import core.behaviorFramework.CompositeBehavior;
 
 import com.github.cliftonlabs.json_simple.*;
+import core.vehicle.Action;
+import core.vehicle.State;
 
 import java.awt.*;
 import java.io.*;
@@ -67,7 +69,8 @@ public class JSONVehicle extends Vehicle {
         // Get vehicle state
         try {
             String name = (String) deserialize.get("state");
-            state = (State) Class.forName(new String(name)).newInstance();
+//            state = (State) Class.forName(new String(name)).newInstance(); // This is depricated...replaced with modern
+            state = (State) Class.forName(name).getDeclaredConstructor().newInstance();
             System.out.println("State Name:" + state.getClass().getName());
         } catch (ClassNotFoundException e) {
             System.out.println(e);
@@ -140,14 +143,17 @@ public class JSONVehicle extends Vehicle {
         boolean arbiterB;
 
         array = (JsonArray) json.get("behaviorTree");
+
         for (Object item : array) {
             energyUsage+=0.25;
             JsonObject jsonBehavior = (JsonObject) item;
+
             try {
                 arbiterB = (boolean) jsonBehavior.get("arbiter");
             } catch (Exception e) {
                 arbiterB = false;
             }
+
             String name = (String) jsonBehavior.get("name");
             System.out.println("name: " + name);
 
@@ -157,6 +163,7 @@ public class JSONVehicle extends Vehicle {
 
                 // Get arbitrator weights and convert into an ArrayList<Double>
                 ArrayList<BigDecimal> weightArray = (ArrayList) jsonBehavior.get("weights");
+
                 Iterator<BigDecimal> itr = weightArray.iterator();
                 ArrayList<Double> weights = new ArrayList<Double>();
                 while (itr.hasNext()){
@@ -168,6 +175,7 @@ public class JSONVehicle extends Vehicle {
 
                 // If this is the Conditional arbiter, we need the condition
                 String condition = null;
+
                 try {
                     condition = (String) jsonBehavior.get("condition");
                 } catch (Exception e) { } // Fall through
@@ -181,7 +189,8 @@ public class JSONVehicle extends Vehicle {
                         System.exit(0);
                     }
                 } else {
-                    arbiter = (ArbitrationUnit) Class.forName(new String(name)).newInstance();
+//                    arbiter = (ArbitrationUnit) Class.forName(new String(name)).newInstance();---This is depricated...replaced with modern
+                    arbiter = (ArbitrationUnit) Class.forName(new String(name)).getDeclaredConstructor().newInstance();
                     treeDesc = treeDesc.concat(new String("Composite_"+name));
                 }
                 arbiter.setWeights(weights);
@@ -192,13 +201,16 @@ public class JSONVehicle extends Vehicle {
 
                 // Build the sub-tree
                 composite = treeFromJSON(jsonBehavior, composite);
+
                 if (tree == null)
                     tree = composite;
                 else
                     tree.add(composite);
             } else {
                 // Create and add the behavior to the tree
-                Behavior behavior = (Behavior) Class.forName(new String(name)).newInstance();
+//                Behavior behavior = (Behavior) Class.forName(new String(name)).newInstance();---This is depricated...replaced with modern
+                Behavior behavior = (Behavior) Class.forName(new String(name)).getDeclaredConstructor().newInstance();
+
                 System.out.println("Classname:" + behavior.getClass().getName());
                 tree.add(behavior);
                 ArrayList<String> parameters;

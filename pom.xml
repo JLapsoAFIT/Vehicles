@@ -11,9 +11,10 @@
 
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
+
   <modules>
-    <module>Instance</module>
     <module>Core</module>
+    <module>Instance</module>
   </modules>
 
   <properties>
@@ -79,7 +80,7 @@
             <archive>
               <manifest>
                 <mainClass>
-                  core.vehicle.Vehicles
+                  instance.Vehicles
                 </mainClass>
               </manifest>
             </archive>

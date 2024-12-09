@@ -4,17 +4,26 @@ import org.dyn4j.geometry.Vector2;
 
 import java.util.HashMap;
 
-public class BlackBoard {
-  HashMap<Integer, Vector2> board;
+/**
+ * An abstract class for Blackboard Communication.
+ */
+public abstract class BlackBoard {
+  protected HashMap<Integer, Vector2> board;
 
-  BlackBoard() {
-    board = new HashMap<Integer,Vector2>();
-  }
-
+  /**
+   * Adds a message to the BlackBoard
+   * @param id The message identifier
+   * @param msg The message content
+   */
   public void setMessage(int id, Vector2 msg){
     board.put(id,msg);
   }
 
+  /**
+   * Retrieves a message by id
+   * @param id The message identifier
+   * @return The message data associated with the message id
+   */
   public Vector2 getMessage(int id) {
     return board.get(id);
   }

@@ -13,3 +13,5 @@ settings.gradle.kts
 /gradlew
 /gradlew.bat
 /logs/
+/Core/build/
+/Instance/build/

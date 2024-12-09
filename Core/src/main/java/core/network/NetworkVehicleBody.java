@@ -3,7 +3,7 @@ package core.network;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 import core.vehicle.State;
-import core.vehicle.Vehicle;
+import core.vehicle.VehicleBody;
 import core.vehicle.Action;
 
 
@@ -11,7 +11,7 @@ import core.vehicle.Action;
 import jakarta.jms.*;
 import org.fusesource.stomp.jms.*;
 
-public class NetworkVehicle extends Vehicle {
+public abstract class NetworkVehicleBody extends VehicleBody {
     /**
      * Using our own State object to store our vehicles personal data
      */
@@ -27,10 +27,6 @@ public class NetworkVehicle extends Vehicle {
     Session session;
     MessageProducer producer;
     MessageConsumer consumer;
-
-    public NetworkVehicle() {
-        state = new State();
-    }
 
     /**
      * <p>The intialization method receives
@@ -71,9 +67,15 @@ public class NetworkVehicle extends Vehicle {
      *
      * @return true
      */
+    @Override
     public boolean sense(){
         // Update the base sensors first
-        super.sense();
+        /**
+         * FIXME: Commenting out "super" class for now.
+         *  -- Need to abstract sensors for Networked and Non-networked Vehicle Bodies
+         */
+
+        //super.sense();
 
         if (session == null) // because of class loading, initialize isn't being called without a cast
             initializeNetwork();
@@ -119,6 +121,17 @@ public class NetworkVehicle extends Vehicle {
         System.out.println(name + ": " + action.name + " " + action.getLeftWheelVelocity() + " " + action.getRightWheelVelocity());
 
         return action;
+    }
+
+    /**
+     * Provides vehicles status update in a string for logging
+     * name, energy, ___
+     *
+     * @return status String
+     */
+    @Override
+    public String statusString() {
+        return "";
     }
 
     private String messagePoll () {

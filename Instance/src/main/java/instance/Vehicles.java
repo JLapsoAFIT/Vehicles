@@ -1,4 +1,4 @@
-package core.vehicle;
+package instance;
 
 /* Profiler: -XX:+UnlockCommercialFeatures -agentlib:hprof=cpu=samples,interval=10 */
 
@@ -6,7 +6,7 @@ import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 import core.framework.SimulationBody;
 import core.framework.SimulationFrame;
-import core.home.Home;
+import core.vehicle.*;
 import org.dyn4j.dynamics.TimeStep;
 import org.dyn4j.geometry.*;
 import org.dyn4j.world.PhysicsWorld;
@@ -33,9 +33,9 @@ public class Vehicles extends SimulationFrame {
     private static JsonObject worldJSON;
 
     public ArrayList<SimulationBody> myVehicles;
-    public ArrayList<Home> homeList;
+    public ArrayList<VehicleHome> homeList;
     public String vehicleType;
-    public BlackBoard blackBoard;
+    public VehicleBlackBoard blackBoard;
 
     private Map<Integer, SimulationBody> keyBoundItemList;
     private SimulationBody keyBoundItem = null;
@@ -90,7 +90,7 @@ public class Vehicles extends SimulationFrame {
         this.world.setGravity(World.ZERO_GRAVITY);
         keyBoundItemList = new HashMap<Integer, SimulationBody>();
         myVehicles = new ArrayList<SimulationBody>();
-        homeList = new ArrayList<Home>();
+        homeList = new ArrayList<VehicleHome>();
         foodList = new ArrayList<SimulationBody>();
 
         // scale is associated with camera, pixels per meter
@@ -166,7 +166,7 @@ public class Vehicles extends SimulationFrame {
                     System.out.println("Homes having starting energy's are optional");
                 }
                 // Add the home to the Home List.
-                Home h = new Home(this);
+                VehicleHome h = new VehicleHome(this);
                 h.setPosition(new Vector2(x, y));
                 h.setName(homeName);
                 h.setEnergy(energy);
@@ -193,7 +193,7 @@ public class Vehicles extends SimulationFrame {
             System.exit(0);
         }
         if (vehicleType.equals("Boid"))
-            blackBoard = new BlackBoard();
+            blackBoard = new VehicleBlackBoard();
 
         // Add Vehicles
         ArrayList<JsonObject> vehicles = (ArrayList<JsonObject>) worldJSON.get("vehicles");
@@ -230,7 +230,7 @@ public class Vehicles extends SimulationFrame {
             try {
                 Vehicle vehicle = null;
                 if (networking) {
-                    vehicle = (Vehicle) Class.forName("core.network.NetworkVehicle").newInstance();
+                    vehicle = (Vehicle) Class.forName("core.network.NetworkVehicleBody").newInstance();
                     vehicle.setName(vehicleName);
                 } else // If the vehicle is a named class try and load the class
                     vehicle = (Vehicle) Class.forName(new String(vehicleName)).newInstance();
@@ -240,7 +240,7 @@ public class Vehicles extends SimulationFrame {
                     vehicle.setUserData(((String)vehicle.getUserData()).concat(vehicleID));
                 if (vehicleHome != null) {
                     // Find the home in the homeList
-                    for(Home h : homeList){
+                    for(VehicleHome h : homeList){
                         if (vehicleHome.equals(h.getName())) {
                             vehicle.setHome(h);
                             h.setColor(vehicle.getColor());
@@ -259,7 +259,7 @@ public class Vehicles extends SimulationFrame {
                     vehicle.setUserData(((String)vehicle.getUserData()).concat(vehicleID));
                 if (vehicleHome != null) {
                     // Find the home in the homeList
-                    for(Home h : homeList){
+                    for(VehicleHome h : homeList){
                         if (vehicleHome.equals(h.getName())) {
                             vehicle.setHome(h);
                             h.setColor(vehicle.getColor());
@@ -497,7 +497,7 @@ public class Vehicles extends SimulationFrame {
             // Get the direction between the center of the vehicle and the impact point
             Vector2 heading = new Vector2(v.getTransform().getTranslation(),f.getTransform().getTranslation());
             double angle = heading.getDirection();
-            angle = angle - v.state.getHeading();
+            angle = angle - v.getState().getHeading();
 //            double angle =  v.getTransform().getTranslation().getAngleBetween(f.getTransform().getTranslation());
 //            angle = angle - v.state.getHeading();
             if ( Math.abs(angle) < 0.225 ) {
@@ -604,13 +604,13 @@ public class Vehicles extends SimulationFrame {
                     // Has the Vehicle run out of energy?
                     if (vEnergy <= 0) {
                         // If holding food, need to drop it.
-                        if(((Vehicle)v).state.isHolding()) {
-                            SimulationBody food = ((Vehicle)v).gripper.getBody2();
-                            world.removeJoint(((Vehicle)v).gripper);
+                        if(((Vehicle) v).getState().isHolding()) {
+                            SimulationBody food = ((Vehicle) v).getGripper().getBody2();
+                            world.removeJoint(((Vehicle) v).getGripper());
                             food.setUserData("Food"); // Renaming the object for testing.
                             food.setAtRest(true);
                             food.setMassType(MassType.INFINITE);
-                            ((Vehicle)v).gripper = null;
+                            ((Vehicle) v).setGripper(null);
                         }
                         // Rename it Dead, and teleport it off the screen.
                         v.setUserData("Dead");
@@ -628,7 +628,7 @@ public class Vehicles extends SimulationFrame {
             foodSpawnTimer--;
             for (SimulationBody f : foodList) {
                 // Home Update
-                for (Home h : homeList) {
+                for (VehicleHome h : homeList) {
                     if (h.getPosition().distance(f.getTransform().getTranslation()) < 2.5 && f.getUserData().equals("Garbage")) {
                         h.setEnergy(h.getEnergy() + FOOD_ENERGY-ENERGY_REWARD); // 25.0; // HARDCODE: energy gained from food.
                         // put the food off-screen // Translation is in relation to current position.
@@ -665,7 +665,7 @@ public class Vehicles extends SimulationFrame {
 
                 foodSpawnTimer = foodSpawnTimerSetting;
             }
-            for (Home h : homeList) {
+            for (VehicleHome h : homeList) {
                 boolean colonyHealthy = h.Step(); // Update Home, includes Spawning new Vehicles
                 homeLogStream.println(timestep+","+h.statusString());
                 if (!colonyHealthy) {

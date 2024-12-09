@@ -3,8 +3,8 @@ package instance.research.ants;
 import core.vehicle.Action;
 import core.vehicle.SensedObject;
 import core.vehicle.State;
+import instance.Vehicle;
 import instance.courses.sample.behaviors.GotoXX;
-import core.vehicle.Vehicle;
 import core.behaviorFramework.ArbitrationUnit;
 import core.behaviorFramework.CompositeBehavior;
 import core.behaviorFramework.arbiters.HighestPriority;
@@ -92,8 +92,7 @@ public class Ant extends Vehicle {
     final double ballRestitution = 0.9;
 
 
-    public Ant() {
-    }
+    public Ant() {}
 
     public Ant(World<SimulationBody> myWorld) {
         this.myWorld = myWorld;

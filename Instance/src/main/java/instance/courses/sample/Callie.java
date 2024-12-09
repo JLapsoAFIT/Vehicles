@@ -2,8 +2,8 @@ package instance.courses.sample;
 
 import instance.courses.sample.behaviors.*;
 import core.vehicle.Action;
-import core.vehicle.Vehicle;
-import core.vehicle.Vehicles;
+import instance.Vehicle;
+import instance.Vehicles;
 import core.behaviorFramework.ArbitrationUnit;
 import core.behaviorFramework.CompositeBehavior;
 import core.behaviorFramework.arbiters.HighestActivation;
