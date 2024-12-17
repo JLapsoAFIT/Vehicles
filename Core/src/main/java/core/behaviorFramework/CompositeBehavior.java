@@ -1,6 +1,6 @@
 package core.behaviorFramework;
 
-import core.vehicle.State;
+import core.State;
 import core.behaviorFramework.arbiters.HighestPriority;
 
 import java.util.ArrayList;

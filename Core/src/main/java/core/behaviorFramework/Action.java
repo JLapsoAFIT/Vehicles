@@ -6,7 +6,7 @@ package core.behaviorFramework;
  * provide a vote field used by arbiters to select an action for execution
  * or submission to a higher level of the framework.
  */
-public class Action extends core.vehicle.Action {
+public class Action extends core.Action {
 
 	public String name;
 

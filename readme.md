@@ -24,7 +24,7 @@ Mouse click and drag moves the camera\
   "pixels_per_meter": 20, # Required Camera scaling critical for position
   "vehicles": [           # Required Array
     {
-      "name": "instance.courses.sample.Callie",  # To load a class need full package name
+      "name": "courses.sample.Callie",  # To load a class need full package name
       "position": [-5,-5],      # optional, default to random
       "draw_scan_lines": "true" # optional, default to false
       "home": [5,5]             # optional, default to N/A
@@ -77,25 +77,25 @@ Key binding for light and obstacle moving is limited to 1 through 5.
 {
 	"vehicleName": "Marie",       # Required
 	"color": [188, 236, 51],      # Optional, default CYAN
-    "state": "instance.courses.sample.MyState",    # Optional, read compile time notes in MyNoOp
+    "state": "courses.sample.MyState",    # Optional, read compile time notes in MyNoOp
 	"behaviorTree": [             # Required
 		{                         # Names must be full package paths
-			"name": "instance.research.arbiters.behaviorFramework.SimplePriority",
+			"name": "courses.research.arbiters.behaviorFramework.SimplePriority",
 			"arbiter": true,      # This is an arbiter and has a sub-tree
 			"weights": [ 0.3, 0.7 ],
 			"behaviorTree": [
 				{
-					"name": "instance.courses.behaviors.sample.Love"
+					"name": "courses.courses.behaviors.sample.Love"
 				},
 				{
 					"name": "behaviorFramework.behaviors.Wander"
 				} ,
 				{
-					"name": "instance.courses.behaviors.sample.AvoidObstacle",
+					"name": "courses.courses.behaviors.sample.AvoidObstacle",
 					"arbiter": false    # Optional for behaviors only required for arbiters
 				},
 				{
-					"name": "instance.research.behaviors.behaviorFramework.NoOp",
+					"name": "courses.research.behaviors.behaviorFramework.NoOp",
 					"parameters": ["6", "10.3", "a string"] # Optional
 				}
 			]

@@ -14,7 +14,8 @@
 
   <modules>
     <module>Core</module>
-    <module>Instance</module>
+    <module>Courses</module>
+<!--    <module>Research</module>-->
   </modules>
 
   <properties>
@@ -80,7 +81,7 @@
             <archive>
               <manifest>
                 <mainClass>
-                  instance.Vehicles
+                  vehicles.Vehicles
                 </mainClass>
               </manifest>
             </archive>

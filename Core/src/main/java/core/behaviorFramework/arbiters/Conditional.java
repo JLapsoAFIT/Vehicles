@@ -1,6 +1,6 @@
 package core.behaviorFramework.arbiters;
 
-import core.vehicle.State;
+import core.State;
 import core.behaviorFramework.Action;
 import core.behaviorFramework.ArbitrationUnit;
 

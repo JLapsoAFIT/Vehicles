@@ -1,8 +1,7 @@
 package core.knowledgeFramework.learners;
 
-import core.framework.SimulationBody;
 import core.framework.SimulationFrame;
-import core.home.Home;
+import core.Home;
 
 /**
  * An abstract class for "Life Long" societal learning.
