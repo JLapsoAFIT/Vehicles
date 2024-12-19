@@ -1,8 +1,9 @@
 package core.behaviorFramework;
-
+//-------------------------Project Imports-----------------------------
 import core.State;
 import core.behaviorFramework.arbiters.HighestPriority;
 
+//-------------------------Maven Imports-------------------------------
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

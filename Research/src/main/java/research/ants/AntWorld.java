@@ -1,7 +1,9 @@
 package research.ants;
-
+//-------------------------Project Imports-----------------------------
 import core.framework.SimulationBody;
 import core.framework.SimulationFrame;
+
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.geometry.Geometry;
 import org.dyn4j.geometry.MassType;
 import org.dyn4j.geometry.Vector2;

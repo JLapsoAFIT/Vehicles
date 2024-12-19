@@ -1,7 +1,8 @@
 package research.ants;
-
+//-------------------------Project Imports-----------------------------
 import core.State;
 
+//-------------------------Maven Imports-------------------------------
 import java.util.ArrayList;
 
 public class EchoAgentState extends State {

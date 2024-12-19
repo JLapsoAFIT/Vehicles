@@ -1,5 +1,7 @@
 package core.behaviorFramework;
+//-------------------------Project Imports-----------------------------
 
+//-------------------------Maven Imports-------------------------------
 /**
  * Action objects are used by behaviors to pass their recommended actions
  * up the behavior framework.  This Action class wrappers an existing one to

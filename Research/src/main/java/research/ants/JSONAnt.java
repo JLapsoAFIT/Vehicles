@@ -1,12 +1,13 @@
 package research.ants;
-
+//-------------------------Project Imports-----------------------------
 import core.Action;
 import core.State;
-import vehicles.Vehicles;
 import core.behaviorFramework.ArbitrationUnit;
 import core.behaviorFramework.Behavior;
 import core.behaviorFramework.CompositeBehavior;
+import vehicles.Vehicles;
 
+//-------------------------Maven Imports-------------------------------
 import com.github.cliftonlabs.json_simple.*;
 
 import java.awt.*;

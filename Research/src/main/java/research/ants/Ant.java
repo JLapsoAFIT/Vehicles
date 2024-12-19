@@ -1,15 +1,17 @@
 package research.ants;
-
+//-------------------------Project Imports-----------------------------
 import core.Action;
 import core.SensedObject;
 import core.State;
-import vehicles.Vehicle;
 import core.behaviors.GotoXX;
 import core.behaviorFramework.ArbitrationUnit;
 import core.behaviorFramework.CompositeBehavior;
 import core.behaviorFramework.arbiters.HighestPriority;
 import core.behaviors.Wander;
 import core.framework.SimulationBody;
+import vehicles.Vehicle;
+
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.geometry.Geometry;
 import org.dyn4j.geometry.Interval;
 import org.dyn4j.geometry.MassType;

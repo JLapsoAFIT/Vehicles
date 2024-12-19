@@ -1,5 +1,7 @@
 package core.framework.input;
+//-------------------------Project Imports-----------------------------
 
+//-------------------------Maven Imports-------------------------------
 import java.awt.*;
 
 public class BooleanStateKeyboardInputHandler extends AbstractKeyboardInputHandler {

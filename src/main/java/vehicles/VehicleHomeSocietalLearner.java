@@ -1,9 +1,11 @@
 package vehicles;
-
+//-------------------------Project Imports-----------------------------
 import core.Home;
 import core.framework.SimulationBody;
 import core.framework.SimulationFrame;
 import core.knowledgeFramework.learners.SocietalLearner;
+//-------------------------Maven Imports-------------------------------
+
 
 public class VehicleHomeSocietalLearner extends SocietalLearner {
     /**

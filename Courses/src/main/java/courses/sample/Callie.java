@@ -1,5 +1,5 @@
 package courses.sample;
-
+//-------------------------Project Imports-----------------------------
 import core.behaviors.*;
 import core.Action;
 import vehicles.Vehicle;
@@ -10,6 +10,7 @@ import core.behaviorFramework.arbiters.HighestActivation;
 import core.behaviorFramework.arbiters.SimplePriority;
 import core.behaviorFramework.arbiters.Conditional;
 
+//-------------------------Maven Imports-------------------------------
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,7 +1,8 @@
 package core.framework.input;
-
+//-------------------------Project Imports-----------------------------
 import core.framework.Camera;
 
+//-------------------------Maven Imports-------------------------------
 import java.awt.*;
 import java.awt.event.MouseEvent;
 

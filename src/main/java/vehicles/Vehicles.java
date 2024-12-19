@@ -1,12 +1,15 @@
 package vehicles;
 
 /* Profiler: -XX:+UnlockCommercialFeatures -agentlib:hprof=cpu=samples,interval=10 */
-
-import com.github.cliftonlabs.json_simple.JsonObject;
-import com.github.cliftonlabs.json_simple.Jsoner;
+//-------------------------Project Imports-----------------------------
 import core.*;
 import core.framework.SimulationBody;
 import core.framework.SimulationFrame;
+
+//-------------------------Maven Imports-------------------------------
+import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsoner;
+
 import org.dyn4j.dynamics.TimeStep;
 import org.dyn4j.geometry.*;
 import org.dyn4j.world.PhysicsWorld;
@@ -58,8 +61,8 @@ public class Vehicles extends SimulationFrame {
     public int FOOD_ENERGY = 35;
 
     public int timestep = 0;
-    private PrintWriter homeLogStream = null;
-    private Logger vehicleLogStream = null;
+//    private PrintWriter homeLogStream = null;
+//    private Logger vehicleLogStream = null;
 
     // let each vehicle be set to draw or not.
 
@@ -393,8 +396,11 @@ public class Vehicles extends SimulationFrame {
         LocalDateTime now = LocalDateTime.now();
 
         LogManager logMan = LogManager.getLogManager();
-        vehicleLogStream = Logger.getLogger("Vehicle"); //logMan.getLogger("Vehicle");
-        vehicleLogStream.setLevel(Level.ALL);
+        // TODO: (Josh) This is ugly, Move to individual classes once functional
+        for (SimulationBody vehicle : myVehicles) {
+            ((Vehicle) vehicle).setLogger(Logger.getLogger("Vehicle"));
+            ((Vehicle) vehicle).setLevel(Level.ALL);
+        }
 
         // Suppress output to Console
         Logger globalLogger = Logger.getLogger("");
@@ -406,16 +412,20 @@ public class Vehicles extends SimulationFrame {
         try
         {
             //Create Handler and Set Formatter
-            FileHandler fh = new
+            FileHandler vehicleHandler = new
                 FileHandler("logs/vehicleLog"+dtf.format(now)+".csv",
                 32000000, 20);
-            fh.setFormatter(new SimpleFormatter());
-            fh.setLevel(Level.FINE);
+            vehicleHandler.setFormatter(new SimpleFormatter());
+            vehicleHandler.setLevel(Level.FINE);
 
             // Add the File Handler to Logger
-            vehicleLogStream.addHandler(fh);
-            vehicleLogStream.log(Level.INFO, "timestep, name, lastAction, energy, home, x, y, heading, " +
-                "leftWheelVelocity, rightWheelVelocity, isHolding, isAtHome, deltaPosition, trees_desc");
+            // TODO: (Josh) This is ugly, Move to individual classes once functional
+            for (SimulationBody vehicle : myVehicles) {
+                ((Vehicle) vehicle).setHandler(vehicleHandler);
+                ((Vehicle) vehicle).logMessage(Level.INFO, "timestep, name, lastAction, energy, home, x, y, heading, " +
+                        "leftWheelVelocity, rightWheelVelocity, isHolding, isAtHome, deltaPosition, trees_desc");
+            }
+
         }
         catch(IOException Ex)
         {
@@ -425,12 +435,19 @@ public class Vehicles extends SimulationFrame {
         }
 
         try {
-            String homeName = "logs/homeLog"+dtf.format(now)+".csv";
-            homeLogStream = new PrintWriter( new FileOutputStream(homeName, true));
-            homeLogStream.write("timestep,name,energy,vehicleCount,position_x,position_y" + "\n"); // writes header to csv file
+            //Create Handler and Set Formatter
+            FileHandler homeHandler = new FileHandler("logs/homeLog"+dtf.format(now)+".csv",
+                    32000000, 20);
+            // TODO: (Josh) This is ugly, Move to individual classes once functional
+            for (Home home : homeList) {
+                home.homeLogStream = Logger.getLogger("VehicleHome");
+                home.logMessage(Level.INFO, "timestep,name,energy,vehicleCount,position_x,position_y" + "\n"); // writes header to csv file
+            }
         }
-        catch (FileNotFoundException e){
-            System.out.println("Error opening the file: homeLog[time].csv"+e);
+        catch(IOException Ex)
+        {
+            System.out.println(Ex.getMessage());
+            System.out.println("ERROR: Unable to open Home Log File");
             System.exit(0);
         }
 /*        try {
@@ -600,7 +617,8 @@ public class Vehicles extends SimulationFrame {
                     ((Vehicle) v).act(act);
                     double vEnergy = ((Vehicle)v).getEnergy();
                     //vehicleLogStream.println(timestep+","+((Vehicle)v).statusString());
-                    vehicleLogStream.log(Level.INFO,timestep+","+((Vehicle)v).statusString() );
+
+                    ((Vehicle) v).logMessage(Level.INFO,timestep+","+((Vehicle)v).statusString() );
                     // Has the Vehicle run out of energy?
                     if (vEnergy <= 0) {
                         // If holding food, need to drop it.
@@ -665,13 +683,13 @@ public class Vehicles extends SimulationFrame {
 
                 foodSpawnTimer = foodSpawnTimerSetting;
             }
-            for (VehicleHome h : homeList) {
-                boolean colonyHealthy = h.Step(); // Update Home, includes Spawning new Vehicles
-                homeLogStream.println(timestep+","+h.statusString());
+            for (VehicleHome home : homeList) {
+                boolean colonyHealthy = home.Step(); // Update Home, includes Spawning new Vehicles
+                home.logMessage(Level.INFO, timestep+","+home.statusString());
                 if (!colonyHealthy) {
                     // Receive collapse signal and when all homes have collapsed
                     // close logs end the simulation.
-                    homeLogStream.close();
+//                    h.homeLogStream.
                     System.exit(0);
                 }
             }

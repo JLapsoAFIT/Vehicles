@@ -1,5 +1,8 @@
 package core.framework.input;
 
+//-------------------------Project Imports-----------------------------
+
+//-------------------------Maven Imports-------------------------------
 import java.util.ArrayList;
 import java.util.List;
 

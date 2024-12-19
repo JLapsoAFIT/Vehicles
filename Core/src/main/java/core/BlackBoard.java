@@ -1,7 +1,8 @@
 package core;
+//-------------------------Project Imports------------------------------
 
+//-------------------------Maven Imports--------------------------------
 import org.dyn4j.geometry.Vector2;
-
 import java.util.HashMap;
 
 /**

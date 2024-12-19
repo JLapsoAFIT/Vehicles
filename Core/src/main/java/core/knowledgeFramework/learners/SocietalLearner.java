@@ -1,7 +1,9 @@
 package core.knowledgeFramework.learners;
-
+//-------------------------Project Imports-----------------------------
 import core.framework.SimulationFrame;
 import core.Home;
+
+//-------------------------Maven Imports-------------------------------
 
 /**
  * An abstract class for "Life Long" societal learning.

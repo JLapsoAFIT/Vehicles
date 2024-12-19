@@ -1,7 +1,8 @@
 package core.behaviorFramework;
-
+//-------------------------Project Imports-----------------------------
 import core.State;
 
+//-------------------------Maven Imports-------------------------------
 import java.util.ArrayList;
 
 /**

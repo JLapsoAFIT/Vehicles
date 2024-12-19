@@ -1,8 +1,15 @@
 package core;
 
+//-------------------------Project Imports-----------------------------
 import core.framework.SimulationBody;
+
+//-------------------------Maven Imports-----------------------------
 import org.dyn4j.dynamics.joint.WeldJoint;
 import org.dyn4j.geometry.*;
+
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * An abstract class for Vehicle Simulation Bodies.
@@ -22,6 +29,7 @@ public abstract class VehicleBody extends SimulationBody {
     protected Vector2 leftSensorLocation;
     protected Vector2 rightSensorLocation;
     protected WeldJoint<SimulationBody> gripper;
+    public Logger vehicleLogStream;
 
     //--------------Vehicle PID Constants-----------------------
     protected double K_p;  //Proportional
@@ -125,4 +133,20 @@ public abstract class VehicleBody extends SimulationBody {
     public State getState() { return this.state;}
 
     public WeldJoint<SimulationBody> getGripper() { return this.gripper;}
+
+    public void logMessage(Level level, String message) {
+        vehicleLogStream.log(level, message);
+    }
+
+    public void setLogger(Logger logger) {
+        vehicleLogStream = logger;
+    }
+
+    public void setLevel(Level level) {
+        vehicleLogStream.setLevel(level);
+    }
+
+    public void setHandler(FileHandler handler) {
+        vehicleLogStream.addHandler(handler);
+    }
 }

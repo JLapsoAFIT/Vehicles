@@ -1,10 +1,11 @@
 package research.ants.behaviors;
-
+//-------------------------Project Imports-----------------------------
 import core.SensedObject;
 import core.State;
 import core.behaviorFramework.Action;
 import core.behaviorFramework.Behavior;
 
+//-------------------------Maven Imports-------------------------------
 import java.util.List;
 
 /**

@@ -1,7 +1,9 @@
 package vehicles;
-
+//-------------------------Project Imports-----------------------------
 import core.Home;
 import core.framework.SimulationBody;
+
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.geometry.Vector2;
 
 import java.util.Arrays;
@@ -10,12 +12,12 @@ public class VehicleHome extends Home {
     Vehicles vehicles;
     private int vehicleCount;
     private VehicleHomeSocietalLearner vehicleHomeSocietalLearner = new VehicleHomeSocietalLearner();
-
+    public
     /**
      * Constructor require link back to World domain to spawn new Vehicles
      * @param v Parent
      */
-    public VehicleHome(Vehicles v) {
+    VehicleHome(Vehicles v) {
         this.vehicles = v;
         pathStore = new int[50];
         Arrays.fill(pathStore,9);
@@ -42,8 +44,8 @@ public class VehicleHome extends Home {
         }
 
         if (vehicleCount == 0) {
-            System.out.println("COLONY COLLAPSE!");
-            System.out.println("Timestep: " + this.vehicles.timestep);
+//            System.out.println("COLONY COLLAPSE!");
+//            System.out.println("Timestep: " + this.vehicles.timestep);
             return false;
         }
 

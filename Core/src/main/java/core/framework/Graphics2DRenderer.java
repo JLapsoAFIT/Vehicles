@@ -23,7 +23,9 @@
  * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package core.framework;
+//-------------------------Project Imports-----------------------------
 
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.geometry.Polygon;
 import org.dyn4j.geometry.Shape;
 import org.dyn4j.geometry.*;

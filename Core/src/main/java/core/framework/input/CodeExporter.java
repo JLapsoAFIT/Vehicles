@@ -23,7 +23,9 @@
  * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package core.framework.input;
+//-------------------------Project Imports-----------------------------
 
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.Epsilon;
 import org.dyn4j.Version;
 import org.dyn4j.collision.AxisAlignedBounds;

@@ -1,9 +1,10 @@
 package core.behaviorFramework.arbiters;
-
+//-------------------------Project Imports-----------------------------
 import core.State;
 import core.behaviorFramework.Action;
 import core.behaviorFramework.ArbitrationUnit;
 
+//-------------------------Maven Imports-------------------------------
 import java.lang.reflect.Method;
 import java.util.Collection;
 

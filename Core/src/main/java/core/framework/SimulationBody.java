@@ -1,5 +1,8 @@
 package core.framework;
 
+//-------------------------Project Imports-----------------------------
+
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.dynamics.Body;
 import org.dyn4j.dynamics.BodyFixture;
 import org.dyn4j.geometry.Convex;

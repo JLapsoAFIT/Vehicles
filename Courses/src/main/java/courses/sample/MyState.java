@@ -1,6 +1,8 @@
 package courses.sample;
-
+//-------------------------Project Imports-----------------------------
 import core.State;
+
+//-------------------------Maven Imports-------------------------------
 
 /**
  * <p>This is a sample state object to show how to extend the base state and

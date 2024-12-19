@@ -1,7 +1,8 @@
 package core.framework.input;
-
+//-------------------------Project Imports-----------------------------
 import core.framework.Camera;
 import core.framework.SimulationBody;
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.dynamics.BodyFixture;
 import org.dyn4j.dynamics.joint.Joint;
 import org.dyn4j.dynamics.joint.PinJoint;

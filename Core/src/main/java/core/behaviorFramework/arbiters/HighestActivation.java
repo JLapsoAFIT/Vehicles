@@ -1,8 +1,9 @@
 package core.behaviorFramework.arbiters;
-
+//-------------------------Project Imports-----------------------------
 import core.behaviorFramework.Action;
 import core.behaviorFramework.ArbitrationUnit;
 
+//-------------------------Maven Imports-------------------------------
 import java.util.ArrayList;
 import java.util.Collection;
 

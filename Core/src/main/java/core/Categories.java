@@ -1,5 +1,7 @@
 package core;
+//-------------------------Project Imports------------------------------
 
+//-------------------------Maven Imports--------------------------------
 import org.dyn4j.collision.TypeFilter;
 
 public final class Categories {

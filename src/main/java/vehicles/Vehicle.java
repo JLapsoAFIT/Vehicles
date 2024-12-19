@@ -1,7 +1,9 @@
 package vehicles;
-
+//-------------------------Project Imports-----------------------------
 import core.*;
 import core.framework.SimulationBody;
+
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.dynamics.BodyFixture;
 import org.dyn4j.dynamics.joint.WeldJoint;
 import org.dyn4j.geometry.*;
@@ -11,6 +13,7 @@ import org.dyn4j.world.result.RaycastResult;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Vehicle extends VehicleBody {
 
@@ -18,6 +21,7 @@ public class Vehicle extends VehicleBody {
     protected Vehicles myWorld;
     // The Home the vehicle is associated with...
     protected Home home;
+    private Logger vehicleStreamLogger;
 
     //---------------------Vehicle Constructor--------------------------------
     public Vehicle() {

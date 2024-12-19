@@ -1,5 +1,7 @@
 package core.framework.input;
+//-------------------------Project Imports-----------------------------
 
+//-------------------------Maven Imports-------------------------------
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

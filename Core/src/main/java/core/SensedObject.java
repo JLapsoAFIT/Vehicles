@@ -1,7 +1,10 @@
 package core;
 
-import com.github.cliftonlabs.json_simple.JsonObject;
+//-------------------------Project Imports-----------------------------
 import core.framework.SimulationBody;
+
+//-------------------------Maven Imports-----------------------------
+import com.github.cliftonlabs.json_simple.JsonObject;
 import org.dyn4j.geometry.Vector2;
 
 public class SensedObject {

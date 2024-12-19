@@ -1,13 +1,15 @@
 package vehicles;
-
-import com.github.cliftonlabs.json_simple.JsonArray;
-import com.github.cliftonlabs.json_simple.JsonObject;
-import com.github.cliftonlabs.json_simple.Jsoner;
+//-------------------------Project Imports-----------------------------
 import core.Action;
 import core.State;
 import core.behaviorFramework.ArbitrationUnit;
 import core.behaviorFramework.Behavior;
 import core.behaviorFramework.CompositeBehavior;
+
+//-------------------------Maven Imports-------------------------------
+import com.github.cliftonlabs.json_simple.JsonArray;
+import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsoner;
 
 import java.awt.*;
 import java.io.*;

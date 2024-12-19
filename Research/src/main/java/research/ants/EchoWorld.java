@@ -1,9 +1,12 @@
 package research.ants;
-
-import com.github.cliftonlabs.json_simple.JsonObject;
-import com.github.cliftonlabs.json_simple.Jsoner;
+//-------------------------Project Imports-----------------------------
 import core.framework.SimulationBody;
 import core.framework.SimulationFrame;
+
+//-------------------------Maven Imports-------------------------------
+import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsoner;
+
 import org.dyn4j.dynamics.TimeStep;
 import org.dyn4j.geometry.*;
 import org.dyn4j.world.PhysicsWorld;

@@ -24,7 +24,10 @@
  */
 package core.framework;
 
+//-------------------------Project Imports-----------------------------
 import core.framework.input.*;
+
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.collision.AxisAlignedBounds;
 import org.dyn4j.collision.Bounds;
 import org.dyn4j.dynamics.BodyFixture;

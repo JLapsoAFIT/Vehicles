@@ -1,6 +1,8 @@
 package core.framework.input;
-
+//-------------------------Project Imports-----------------------------
 import core.framework.SimulationBody;
+
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.world.World;
 
 import java.awt.*;

@@ -1,5 +1,7 @@
 package core.framework.input;
+//-------------------------Project Imports-----------------------------
 
+//-------------------------Maven Imports-------------------------------
 import core.framework.Camera;
 import org.dyn4j.geometry.Vector2;
 

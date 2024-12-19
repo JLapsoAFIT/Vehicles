@@ -1,10 +1,13 @@
 package core;
 
+//-------------------------Project Imports------------------------------
+
+//-------------------------Maven Imports--------------------------------
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 
 
-// ActiveMQ STOMP packaging
+//-------------------------ActiveMQ STOMP packaging-----------------------
 import jakarta.jms.*;
 import org.fusesource.stomp.jms.*;
 

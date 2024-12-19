@@ -1,11 +1,13 @@
 package core;
 
-import org.dyn4j.geometry.Vector2;
+//-------------------------Project Imports-----------------------------
 
+//-------------------------Maven Imports-------------------------------
+
+import org.dyn4j.geometry.Vector2;
+import com.github.cliftonlabs.json_simple.*;
 import java.util.ArrayList;
 import java.util.List;
-import com.github.cliftonlabs.json_simple.*;
-
 /**
  * State object for vehicle's memory
  */

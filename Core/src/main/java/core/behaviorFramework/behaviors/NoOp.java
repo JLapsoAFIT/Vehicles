@@ -1,8 +1,9 @@
 package core.behaviorFramework.behaviors;
-
+//-------------------------Project Imports-----------------------------
 import core.State;
 import core.behaviorFramework.Action;
 import core.behaviorFramework.Behavior;
+//-------------------------Maven Imports-------------------------------
 
 /**
  * This is a do nothing sample behavior.  It will always vote to stop the

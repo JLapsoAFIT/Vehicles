@@ -1,8 +1,10 @@
 package research.boid;
-
+//-------------------------Project Imports-----------------------------
 import core.BlackBoard;
 import core.SensedObject;
 import core.State;
+
+//-------------------------Maven Imports-------------------------------
 import org.dyn4j.geometry.Vector2;
 
 import java.util.HashMap;

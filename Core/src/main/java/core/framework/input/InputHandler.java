@@ -1,5 +1,7 @@
 package core.framework.input;
+//-------------------------Project Imports-----------------------------
 
+//-------------------------Maven Imports-------------------------------
 import java.util.List;
 
 public interface InputHandler {

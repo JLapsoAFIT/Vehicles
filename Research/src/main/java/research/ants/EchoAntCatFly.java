@@ -1,5 +1,7 @@
 package research.ants;
+//-------------------------Project Imports-----------------------------
 
+//-------------------------Maven Imports-------------------------------
 /**
  * This interaction model is based on Holland's original Echo interactions.  However, it uses
  * the Hamming Distance calculation proposed in Smith and Bedau's paper on Echo.

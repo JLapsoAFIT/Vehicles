@@ -1,8 +1,10 @@
 package courses.sample.behaviors;
-
+//-------------------------Project Imports-----------------------------
 import core.State;
 import core.behaviorFramework.Action;
 import core.behaviorFramework.Behavior;
+
+//-------------------------Maven Imports-------------------------------
 
 /**
  * Braitenberg's Love behavior

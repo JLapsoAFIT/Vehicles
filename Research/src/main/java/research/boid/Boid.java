@@ -1,13 +1,14 @@
 package research.boid;
-
-import research.boid.behaviors.*;
+//-------------------------Project Imports-----------------------------
 import core.Action;
-import vehicles.Vehicle;
-import vehicles.Vehicles;
 import core.behaviorFramework.ArbitrationUnit;
 import core.behaviorFramework.CompositeBehavior;
 import core.behaviorFramework.arbiters.CommandFusion;
+import research.boid.behaviors.*;
+import vehicles.Vehicle;
+import vehicles.Vehicles;
 
+//-------------------------Maven Imports-------------------------------
 import java.awt.*;
 import java.util.ArrayList;
 
