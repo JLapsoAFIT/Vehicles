@@ -190,7 +190,7 @@ public class Vehicles extends SimulationFrame {
 
         // Get Vehicle Type
         try {
-            vehicleType = (String) worldJSON.get("vehicle_type");
+            vehicleType = (String) worldJSON.get("vehicleType");
         } catch (Exception e) {
             System.out.println("World need a Vehicle Type {Braitenberg, Ant, Boid}!");
             System.exit(0);
@@ -294,7 +294,7 @@ public class Vehicles extends SimulationFrame {
                 Light.setUserData(new String("Light"));
                 Light.getFixture(0).setFilter(Categories.WORLD);
                 try {
-                    BigDecimal key = (BigDecimal) item.get("bound_key");
+                    BigDecimal key = (BigDecimal) item.get("boundKey");
                     if (key.intValue() >= 1 && key.intValue() <= 5) {
                         keyBoundItemList.put(key.intValue(), Light);
                     }
@@ -335,7 +335,7 @@ public class Vehicles extends SimulationFrame {
                 obstacle.setUserData("Obstacle");
                 obstacle.getFixture(0).setFilter(Categories.WORLD);
                 try {
-                    BigDecimal key = (BigDecimal) item.get("bound_key");
+                    BigDecimal key = (BigDecimal) item.get("boundKey");
                     if (key.intValue() >= 1 && key.intValue() <= 5) {
                         keyBoundItemList.put(key.intValue(), obstacle);
                     }
@@ -398,7 +398,6 @@ public class Vehicles extends SimulationFrame {
         LogManager logMan = LogManager.getLogManager();
         // TODO: (Josh) This is ugly, Move to individual classes once functional
         for (SimulationBody vehicle : myVehicles) {
-            ((Vehicle) vehicle).setLogger(Logger.getLogger("Vehicle"));
             ((Vehicle) vehicle).setLevel(Level.ALL);
         }
 
@@ -423,7 +422,7 @@ public class Vehicles extends SimulationFrame {
             for (SimulationBody vehicle : myVehicles) {
                 ((Vehicle) vehicle).setHandler(vehicleHandler);
                 ((Vehicle) vehicle).logMessage(Level.INFO, "timestep, name, lastAction, energy, home, x, y, heading, " +
-                        "leftWheelVelocity, rightWheelVelocity, isHolding, isAtHome, deltaPosition, trees_desc");
+                        "leftWheelVelocity, rightWheelVelocity, isHolding, isAtHome, deltaPosition, treesDesc");
             }
 
         }
@@ -438,10 +437,9 @@ public class Vehicles extends SimulationFrame {
             //Create Handler and Set Formatter
             FileHandler homeHandler = new FileHandler("logs/homeLog"+dtf.format(now)+".csv",
                     32000000, 20);
-            // TODO: (Josh) This is ugly, Move to individual classes once functional
             for (Home home : homeList) {
-                home.homeLogStream = Logger.getLogger("VehicleHome");
-                home.logMessage(Level.INFO, "timestep,name,energy,vehicleCount,position_x,position_y" + "\n"); // writes header to csv file
+                home.setHandler(homeHandler);
+                home.logMessage(Level.INFO, "timestep,name,energy,vehicleCount,positionX,positionY" + "\n"); // writes header to csv file
             }
         }
         catch(IOException Ex)
@@ -454,7 +452,7 @@ public class Vehicles extends SimulationFrame {
             String vehicleName = "logs//vehicleLog"+dtf.format(now)+".csv";
             vehicleLogStream = new PrintWriter( new FileOutputStream(vehicleName, true));
             vehicleLogStream.write("timestep,name,lastAction, energy, home, x, y, heading, isHolding, isAtHome, " +
-                "deltaPosition, trees_desc" + "\n"); // writes header to csv file
+                "deltaPosition, treesDesc" + "\n"); // writes header to csv file
         }
         catch (FileNotFoundException e){
             System.out.println("Error opening the file: vehicleLog[time].csv");
@@ -464,15 +462,15 @@ public class Vehicles extends SimulationFrame {
     }
 
     /**
-     * Parse Vehicle details (draw_scan_lines and position) from the input
+     * Parse Vehicle details (drawScanLines and position) from the input
      * json and add the vehicle to the world and Vehicle pool.
      *
      * @param vehicle The vehicle object
-     * @param item json (draw_scan_lines and position)
+     * @param item json (drawScanLines and position)
      */
     private void insertVehicle(Vehicle vehicle, JsonObject item) {
         try {
-            String scanLines = (String)item.get("draw_scan_lines");
+            String scanLines = (String)item.get("drawScanLines");
             vehicle.setDrawScanLines(scanLines.equals("true"));
         } catch (Exception e) { // drawing scan lines is not set. Default to false
             vehicle.setDrawScanLines(false);
@@ -553,7 +551,7 @@ public class Vehicles extends SimulationFrame {
     public static void main(String[] args) {
         // Parse args to get World filename
         if (args.length != 1) {
-            System.out.println("usage: world_filename");
+            System.out.println("usage: worldFilename");
             System.exit(0);
         }
 
@@ -568,7 +566,7 @@ public class Vehicles extends SimulationFrame {
         }
 
         // Get world scale factor (pixels per meter)
-        BigDecimal scale = (BigDecimal)worldJSON.get("pixels_per_meter");
+        BigDecimal scale = (BigDecimal)worldJSON.get("pixelsPerMeter");
 
         try {
             Vehicles simulation = new Vehicles(scale.intValue());
@@ -715,7 +713,7 @@ public class Vehicles extends SimulationFrame {
             ySpawn += foodLocationList.get(loc).y;
             separate = true;
             for (SimulationBody foodIter : foodList) {
-                Vector2 loc_test = foodIter.getWorldCenter();
+                Vector2 locTest = foodIter.getWorldCenter();
                 if (foodIter.getWorldCenter().distance(xSpawn, ySpawn) <= 0.75) {
                     separate = false;
                     attemptCounter++;
@@ -734,28 +732,28 @@ public class Vehicles extends SimulationFrame {
     private class CustomKeyListener extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-            Vector2 up_down = new Vector2(0.0, 1.0);
-            Vector2 left_right = new Vector2(1.0, 0.0);
+            Vector2 upDown = new Vector2(0.0, 1.0);
+            Vector2 leftRight = new Vector2(1.0, 0.0);
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_W:
-                    up_down = up_down.multiply(3);
+                    upDown = upDown.multiply(3);
                     if (keyBoundItem != null)
-                        keyBoundItem.applyForce(up_down);
+                        keyBoundItem.applyForce(upDown);
                     break;
                 case KeyEvent.VK_S:
-                    up_down = up_down.multiply(-3);
+                    upDown = upDown.multiply(-3);
                     if (keyBoundItem != null)
-                        keyBoundItem.applyForce(up_down);
+                        keyBoundItem.applyForce(upDown);
                     break;
                 case KeyEvent.VK_A:
-                    left_right = left_right.multiply(-3);
+                    leftRight = leftRight.multiply(-3);
                     if (keyBoundItem != null)
-                        keyBoundItem.applyForce(left_right);
+                        keyBoundItem.applyForce(leftRight);
                     break;
                 case KeyEvent.VK_D:
-                    left_right = left_right.multiply(3);
+                    leftRight = leftRight.multiply(3);
                     if (keyBoundItem != null)
-                        keyBoundItem.applyForce(left_right);
+                        keyBoundItem.applyForce(leftRight);
                     break;
                 case KeyEvent.VK_X:
                     if (keyBoundItem != null)

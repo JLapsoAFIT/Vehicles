@@ -1,17 +1,17 @@
 {
-  "pixels_per_meter": 10,
+  "pixelsPerMeter": 10,
   "vehicles": [
     {
       "name": "Agent3",
       "position": [-5,-5],
-      "draw_scan_lines": "true",
-      "home": "Callie_s"
+      "drawScanLines": "true",
+      "home": "CallieHome"
     }
   ],
   "lights": [
     {
       "position": [18,15],
-      "bound_key": 1
+      "boundKey": 1
     }, {
       "position": [-18.0, -15.0]
     }
@@ -37,11 +37,11 @@
   },
   "homes": [
     {
-      "name": "Marie_s",
+      "name": "MarieHome",
       "position": [5,-15],
       "resource": 2
     },{
-      "name": "Callie_s",
+      "name": "CallieHome",
       "position": [-15,5],
       "resource": 2
     }

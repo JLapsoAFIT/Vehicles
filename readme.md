@@ -21,42 +21,54 @@ Mouse click and drag moves the camera\
 ##### World
 ```json
 {
-  "pixels_per_meter": 20, # Required Camera scaling critical for position
-  "vehicles": [           # Required Array
+  "pixelsPerMeter": 20,                 // Required Camera scaling critical for position
+  "vehicles": [                         // Required Array
     {
-      "name": "courses.sample.Callie",  # To load a class need full package name
-      "position": [-5,-5],      # optional, default to random
-      "draw_scan_lines": "true" # optional, default to false
-      "home": [5,5]             # optional, default to N/A
-    },{
-      "name": "Marie",          # To load JSON this is filename in data folder
+      "name": "courses.sample.Callie",  // To load a class need full package name
+      "position": [-5,-5],              // optional--default to random
+      "drawScanLines": "true",          // optional--default to "false"
+      "home": [5,5],                    // optional--default to N/A
+      "logging": "true"                 // optional--default to "false" 
+    },
+    {
+      "name": "Marie",                  // To load JSON this is filename in data folder
       "position": [5,5],
-      "draw_scan_lines": "true"
+      "drawScanLines": "true"
     }
   ],
-  "lights": [                # Optional Array
+  "lights": [                           // Optional Array
     {
-      "position": [18,15],   # Location (required)
-      "bound_key": 1         # Optional, default to unbound
+      "position": [18,15],              // Location (required)
+      "boundKey": 1                     // Optional, default to unbound
     }, {
       "position": [-18.0, -15.0]
     }
   ],
-  "obstacles": [             # Optional Array
+  "obstacles": [                        // Optional Array
     {
-      "position": [-10,-10], # Obstacle's center (required)
-      "size": [2,4]          # Width & Height (required)
-      "bound_key": 2         # Optional, default to unbound
+      "position": [-10,-10],            // Obstacle's center (required)
+      "size": [2,4],                    // Width & Height (required)
+      "boundKey": 2                     // Optional, default to unbound
     }
   ],
-  "food": [                 # Optional Array
-    "timer": 200,           # Number of steps between food respawns
-    "locations": [          # Required
-      {
-        "position": [-2,2],   # Required Center point of food spawn point
-        "distribution": [3,3] # Required size of food spawn point +/- around position
-      }
-    ]
+  "food": [                             // Optional Array
+    {
+      "timer": 200,                     // Number of steps between food respawns
+      "locations": [                    // Required
+        {
+          "position": [-2, 2],          // Required Center point of food spawn point
+          "distribution": [3, 3]        // Required size of food spawn point +/- around position
+        }
+      ]
+    }  
+  ],
+  "homes": [                            // Optional Array
+    {
+      "name": "CallieHome",             // Required
+      "position": [2,2],                // Required
+      "resource": 20,                   // Required
+      "logging": "true"                // Optional, default to "false"
+    }
   ]
 }
 ```

@@ -1,21 +1,21 @@
 {
-  "pixels_per_meter": 20,
-  "vehicle_type": "Braitenberg",
+  "pixelsPerMeter": 20,
+  "vehicleType": "Braitenberg",
   "vehicles": [
     {
       "name": "instance.courses.sample.Callie",
       "position": [-5,-5],
-      "draw_scan_lines": "true"
+      "drawScanLines": "true"
     },{
       "name": "Marie",
       "position": [5,5],
-      "draw_scan_lines": "false"
+      "drawScanLines": "false"
     }
   ],
   "lights": [
     {
       "position": [18,15],
-      "bound_key": 1
+      "boundKey": 1
     }, {
       "position": [-18.0, -15.0]
     }

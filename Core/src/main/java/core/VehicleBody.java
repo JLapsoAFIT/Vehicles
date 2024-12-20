@@ -29,12 +29,13 @@ public abstract class VehicleBody extends SimulationBody {
     protected Vector2 leftSensorLocation;
     protected Vector2 rightSensorLocation;
     protected WeldJoint<SimulationBody> gripper;
-    public Logger vehicleLogStream;
+    protected Logger vehicleLogStream;
+
 
     //--------------Vehicle PID Constants-----------------------
-    protected double K_p;  //Proportional
-    protected double K_i;  //Integral
-    protected double K_d;  //Derivative
+    protected double kProportional;  //Proportional
+    protected double kIntegral;  //Integral
+    protected double kDerivative;  //Derivative
 
     //---------------Vehicle Characteristics--------------------
     protected boolean steerDrive; // false = differential drive, true = steer+thrust drive
@@ -136,10 +137,6 @@ public abstract class VehicleBody extends SimulationBody {
 
     public void logMessage(Level level, String message) {
         vehicleLogStream.log(level, message);
-    }
-
-    public void setLogger(Logger logger) {
-        vehicleLogStream = logger;
     }
 
     public void setLevel(Level level) {

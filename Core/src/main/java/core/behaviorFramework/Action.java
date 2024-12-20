@@ -13,12 +13,12 @@ public class Action extends core.Action {
 	public String name;
 
 	//--------------------------------------------------Vote
-	private double f_vote;
+	private double fVote;
 	public double getVote() {
-		return f_vote;
+		return fVote;
 	}
 	public void setVote(double i) {
-		f_vote = i;
+		fVote = i;
 	}
 
 	//--------------------------------------------------Clear/Reset
@@ -29,12 +29,12 @@ public class Action extends core.Action {
 	}
 
 	public Action () {
-		f_vote = 0.0;
+		fVote = 0.0;
 	}
 
 	public Action(Action a) {
 		//super(a);
-		this.f_vote = a.f_vote;
+		this.fVote = a.fVote;
 		this.name = a.name;
 	}
 

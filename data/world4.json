@@ -1,11 +1,11 @@
 {
-  "pixels_per_meter": 20,
-  "vehicle_type": "Ant",
+  "pixelsPerMeter": 20,
+  "vehicleType": "Ant",
   "vehicles": [
     {
       "name": "Frye",
       "position": [-5,5],
-      "draw_scan_lines": "false",
+      "drawScanLines": "false",
       "home": "Callie_s",
       "network": "true"
     }
@@ -25,7 +25,7 @@
   },
   "homes": [
     {
-      "name": "Callie_s",
+      "name": "CallieHome",
       "position": [1,1],
       "resource": 20
     }

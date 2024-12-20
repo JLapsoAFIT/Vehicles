@@ -21,7 +21,6 @@ public class Vehicle extends VehicleBody {
     protected Vehicles myWorld;
     // The Home the vehicle is associated with...
     protected Home home;
-    private Logger vehicleStreamLogger;
 
     //---------------------Vehicle Constructor--------------------------------
     public Vehicle() {
@@ -30,11 +29,11 @@ public class Vehicle extends VehicleBody {
         this.rightWheelLocation = new Vector2( 0.5, -0.5);
         this.leftSensorLocation = new Vector2( -0.27, 0.86);
         this.rightSensorLocation = new Vector2( 0.27, 0.86);
-
+        this.vehicleLogStream = Logger.getLogger(this.getClass().getName());
         //--------------Vehicle PID Constants-----------------------
-        this.K_p = 10;
-        this.K_i = 0.0;
-        this.K_d = 0.0;
+        this.kProportional = 10;
+        this.kIntegral = 0.0;
+        this.kDerivative = 0.0;
 
         //---------------Vehicle Characteristics--------------------
         this.energy = 100.0;
@@ -462,7 +461,7 @@ public class Vehicle extends VehicleBody {
 
         // Proportional Controller
         double error = baseTorque - this.getAngularVelocity(); // SetPoint - ProcessVariable (e(t) = r(t)-y(t))
-        double u = K_p * error; // Control variable
+        double u = kProportional * error; // Control variable
 
         // Apply Torque\
         this.applyTorque(u);
@@ -602,18 +601,18 @@ public class Vehicle extends VehicleBody {
      * Called from render.  Must provide it the coordinates of the specific sensor you want to ray cast
      * from.
      *
-     * @param sensor_x
-     * @param sensor_y
-     * @param sensor_dir
+     * @param sensorX
+     * @param sensorY
+     * @param sensorDir
      */
-    private void rayCasting(double sensor_x, double sensor_y, int sensor_dir) {
+    private void rayCasting(double sensorX, double sensorY, int sensorDir) {
         final double length = SENSOR_RANGE;
 
-        Vector2 start = this.getTransform().getTransformed(new Vector2(sensor_x, sensor_y));
+        Vector2 start = this.getTransform().getTransformed(new Vector2(sensorX, sensorY));
         SensedObject obj;
 
         for (double i : sweepValues) { //sweepValues) {
-            if (sensor_dir == 1) { // Right side, reverse the table.
+            if (sensorDir == 1) { // Right side, reverse the table.
                 i = i * -1;
             }
             Ray ray = new Ray(start, (i + state.getHeading())); //baseVehicle.getLinearVelocity().getDirection()));
@@ -653,7 +652,7 @@ public class Vehicle extends VehicleBody {
 //                }
 
             String side = "Left";
-            if (sensor_dir == 1) {
+            if (sensorDir == 1) {
                 side = "Right";
             }
 

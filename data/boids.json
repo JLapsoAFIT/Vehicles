@@ -1,17 +1,17 @@
 {
-  "pixels_per_meter": 10,
-  "vehicle_type": "Boid",
+  "pixelsPerMeter": 10,
+  "vehicleType": "Boid",
   "vehicles": [
     {
-      "name": "boids",
+      "name": "BoidAgent",
       "position": [-5,-5],
-      "draw_scan_lines": "true",
+      "drawScanLines": "true",
       "resource": "001"
     },
     {
-      "name": "boids",
+      "name": "BoidAgent",
       "position": [-3,-5],
-      "draw_scan_lines": "true",
+      "drawScanLines": "true",
       "resource": "002"
     }
   ],

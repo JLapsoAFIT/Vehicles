@@ -20,7 +20,7 @@ public abstract class Home extends SimulationBody {
     public Color color;
     public int[] pathStore;
     public Vector2 storeRelNav;
-    public Logger homeLogStream;
+    protected Logger homeLogStream;
 
 
 
@@ -95,10 +95,6 @@ public abstract class Home extends SimulationBody {
 
     public void logMessage(Level level, String message) {
         homeLogStream.log(level, message);
-    }
-
-    public void setLogger(Logger logger) {
-        homeLogStream = logger;
     }
 
     public void setLevel(Level level) {

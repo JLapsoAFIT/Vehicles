@@ -7,21 +7,23 @@ import core.framework.SimulationBody;
 import org.dyn4j.geometry.Vector2;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 public class VehicleHome extends Home {
     Vehicles vehicles;
     private int vehicleCount;
     private VehicleHomeSocietalLearner vehicleHomeSocietalLearner = new VehicleHomeSocietalLearner();
-    public
+
     /**
      * Constructor require link back to World domain to spawn new Vehicles
      * @param v Parent
      */
-    VehicleHome(Vehicles v) {
+    public VehicleHome(Vehicles v) {
         this.vehicles = v;
         pathStore = new int[50];
         Arrays.fill(pathStore,9);
         storeRelNav = new Vector2();
+        this.homeLogStream = Logger.getLogger(this.getClass().getName());
     }
 
     /**

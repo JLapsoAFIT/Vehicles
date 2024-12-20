@@ -1,20 +1,20 @@
 {
-  "pixels_per_meter": 12,
-  "vehicle_type": "Ant",
+  "pixelsPerMeter": 12,
+  "vehicleType": "Ant",
   "vehicles": [
     {
       "name": "Agent4",
       "position": [3,3],
       "orientation": 1.0,
-      "draw_scan_lines": "false",
-      "home": "Callie_s"
+      "drawScanLines": "false",
+      "home": "CallieHome"
     },
     {
       "name": "Agent4",
       "position": [-3,3],
       "orientation": 2.4,
-      "draw_scan_lines": "false",
-      "home": "Callie_s"
+      "drawScanLines": "false",
+      "home": "CallieHome"
     }
   ],
   "food": {
@@ -32,7 +32,7 @@
   },
   "homes": [
     {
-      "name": "Callie_s",
+      "name": "CallieHome",
       "position": [1,1],
       "resource": 20
     }
