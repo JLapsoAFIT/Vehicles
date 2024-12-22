@@ -1,4 +1,4 @@
-package core.utilities.data
+package utilities.data
 
 import kotlinx.serialization.Serializable
 

@@ -1,4 +1,4 @@
-package core.utilities.enums
+package utilities.enums
 
 
 /**
@@ -10,9 +10,10 @@ package core.utilities.enums
  * @param distribution The required size of food spawn point +/- around position
  */
 enum class FoodConfiguration(
-    val timer: Int,
     val count: Int,
-    val distribution: List<Int>
+    val timer: Int = 200,
+    val distribution: List<Int> = listOf()
 ) {
-    DEFAULT(200, 5, listOf(3,3))
+    DEFAULT(0, 0, listOf()),
+    RELNAV_TEST(2, 200, listOf(0,1)) //distribution is +/- 0 for the first and +/-1 for the second
 }

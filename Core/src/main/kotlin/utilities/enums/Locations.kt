@@ -1,4 +1,4 @@
-package core.utilities.enums
+package utilities.enums
 
 enum class Locations(val range: List<Int>) {
     DEFAULT(listOf(-25,25)),

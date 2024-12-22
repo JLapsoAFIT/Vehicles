@@ -1,49 +1,58 @@
-package core.utilities
+package utilities
 
-import core.utilities.data.*
-import core.utilities.enums.*
+import utilities.data.*
+import utilities.enums.*
 
 /**
- * A Kotlin class for generating a json file for [Vehicles].  These files are important for reproducing our results as
+ * A Kotlin class for generating a json file for [vehicles.Vehicles].  These files are important for reproducing our results as
  * well as testing various hyperparamters for various vehicle types.
  *
  * @param pixelsPerMeter A scaling factor for drawing
- * @param vehicleType The type of vehicles to generate
  * @param vehicles Configuration data for generating vehicles
  * @param lights Configuration data for generating lights
  * @param obstacles Configuration data for generating obstacles
  * @param food Configuration data for generating food
  * @param homes Configuration data for generating homes
  */
-class WorldCreator(
-    private val pixelsPerMeter: ScaleConfiguration = ScaleConfiguration.DEFAULT,
-    private val vehicleType: VehicleType = VehicleType.BRAITENBERG,
-    private val vehicles: VehicleConfiguration = VehicleConfiguration.DEFAULT,
-    private val lights: LightConfiguration = LightConfiguration.DEFAULT,
-    private val obstacles: ObstacleConfiguration = ObstacleConfiguration.DEFAULT,
-    private val food: FoodConfiguration = FoodConfiguration.DEFAULT,
-    private val homes: HomeConfiguration = HomeConfiguration.DEFAULT
-){
+class WorldCreator(){
     /**
      * A function for generating world data given configuration parameters
      */
-    fun generateWorld() : WorldData {
-        val vehicleData = generateVehicles()
-        val lightData = generateLights()
-        val obstacleData = generateObstacles()
-        val foodData = generateFood()
-        val homeData = generateHomes()
+    fun generateWorld(worldConfig: GeneratorConfiguration) : WorldData {
+        val vehicleData = generateVehicles(worldConfig.vehicleConfiguration, worldConfig.homeConfiguration)
+        val lightData = generateLights(worldConfig.lightConfiguration)
+        val obstacleData = generateObstacles(worldConfig.obstacleConfiguration)
+        val foodData = generateFood(worldConfig.foodConfiguration)
+        val homeData = generateHomes(worldConfig.homeConfiguration)
 
-        return WorldData(pixelsPerMeter.pixelsPerMeter, vehicleType.type, vehicleData, lightData, obstacleData, foodData, homeData)
+        return WorldData(worldConfig.pixelsPerMeter, worldConfig.vehicleType.type, vehicleData, lightData, obstacleData, foodData, homeData)
     }
 
     /**
      * A function for generating vehicle data
      */
-    private fun generateVehicles(): List<VehicleData> {
+    private fun generateVehicles(vehicleConfiguration: VehicleConfiguration, homeConfiguration: HomeConfiguration): List<VehicleData> {
         val vehicleList = mutableListOf<VehicleData>()
-        for (vehicleInstance in 0 until vehicles.count) {
-            vehicleList.add(VehicleData(name = vehicles.names[vehicleInstance]))
+
+        //TODO: Currently each vehicle has its own home or they all share a home...
+        val vehicleHomes = when (homeConfiguration.names.size == vehicleConfiguration.names.size) {
+            true -> homeConfiguration.names
+            false -> List(vehicleConfiguration.names.size) {
+                when(homeConfiguration.names.isEmpty()) {
+                    true -> null
+                    false -> homeConfiguration.names.first()
+                }
+            }
+        }
+        for (vehicleInstance in 0 until vehicleConfiguration.count) {
+            vehicleList.add(
+                VehicleData(
+                    name = vehicleConfiguration.names[vehicleInstance],
+                    logging = vehicleConfiguration.logging,
+                    drawScanLines = vehicleConfiguration.drawScanLines,
+                    home = vehicleHomes[vehicleInstance],
+                )
+            )
         }
         return vehicleList
     }
@@ -51,9 +60,9 @@ class WorldCreator(
     /**
      * A function for generating light data
      */
-    private fun generateLights(): List<LightData> {
+    private fun generateLights(lightConfiguration: LightConfiguration): List<LightData> {
         val lightList = mutableListOf<LightData>()
-        for (lightInstance in 0 until lights.count) {
+        for (lightInstance in 0 until lightConfiguration.count) {
             lightList.add(LightData())
         }
         return lightList
@@ -62,10 +71,10 @@ class WorldCreator(
     /**
      * A function for generating obstacle data
      */
-    private fun generateObstacles(): List<ObstacleData> {
+    private fun generateObstacles(obstacleConfiguration: ObstacleConfiguration): List<ObstacleData> {
         val obstacleList = mutableListOf<ObstacleData>()
-        for (obstacleInstance in 0 until obstacles.count) {
-            obstacleList.add(ObstacleData(obstacles.size))
+        for (obstacleInstance in 0 until obstacleConfiguration.count) {
+            obstacleList.add(ObstacleData(obstacleConfiguration.size))
         }
         return obstacleList
     }
@@ -73,24 +82,32 @@ class WorldCreator(
     /**
      * A function for generating food data
      */
-    private fun generateFood(): List<FoodData> {
+    private fun generateFood(foodConfiguration: FoodConfiguration): List<FoodData> {
         val foodList = mutableListOf<FoodData>()
+        val distributionList = when(foodConfiguration.distribution.size == foodConfiguration.count){
+            true -> List(foodConfiguration.count) {
+                listOf(foodConfiguration.distribution[it], foodConfiguration.distribution[it])
+            }
+            false -> List(foodConfiguration.count) {
+                listOf(foodConfiguration.distribution[0], foodConfiguration.distribution[0])
+            }
+        }
         val locations = mutableListOf<LocationData>()
-        for (foodInstance in 0 until food.count) {
-            val location = LocationData(food.distribution)
+        for (foodInstance in 0 until foodConfiguration.count) {
+            val location = LocationData(distributionList[foodInstance])
             locations.add(location)
         }
-        foodList.add(FoodData(food.timer, locations))
+        foodList.add(FoodData(foodConfiguration.timer, locations))
         return foodList
     }
 
     /**
      * A function for generating home data
      */
-    private fun generateHomes(): List<HomeData> {
+    private fun generateHomes(homeConfiguration: HomeConfiguration): List<HomeData> {
         val homeList = mutableListOf<HomeData>()
-        for (homeInstance in 0 until homes.count) {
-            homeList.add(HomeData(homes.names[homeInstance]))
+        for (homeInstance in 0 until homeConfiguration.count) {
+            homeList.add(HomeData(homeConfiguration.names[homeInstance]))
         }
         return homeList
     }

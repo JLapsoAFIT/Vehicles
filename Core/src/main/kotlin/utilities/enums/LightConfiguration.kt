@@ -1,4 +1,5 @@
-package core.utilities.enums
+package utilities.enums
+
 /**
  * An enum class for light object configuration values
  *

@@ -1,4 +1,4 @@
-package core.utilities.enums
+package utilities.enums
 
 /**
  * An enum class for Ant Type strings

@@ -1,0 +1,26 @@
+Old notes on command line args...
+*
+     * **Vehicles**
+     * args[2]: Number of vehicles (Integer)
+     * args[3]: Vehicle relative offset (Array) [offsetX,offsetY]
+     * args[4]: Vehicle logging (Boolean)
+     *
+     * **Lights**
+     * args[5]: Number of lights (Integer)
+     *
+     * **Obstacles**
+     * args[6]: Number of obstacles (Integer)
+     * args[7]: Obstacle height (Integer)
+     * args[8]: Obstacle width (Integer)
+     * args[9]: Obstacle relative offsets (Array) [offsetX,offsetY]
+     *
+     * **Food**
+     * args[10]: Food Timer
+     * args[11]: Number of food items
+     * args[12]: Food distribution (Array) [foodDistributionX,foodDistributionY]
+     *
+     * **Homes**
+     * args[13]: Home logging (Boolean)
+     * args[14]: Home names (Array) [homeName1,homeName2,...,homeName#]
+     * args[15]: Home relative offsets (Array) [offsetX,offsetY]
+     *

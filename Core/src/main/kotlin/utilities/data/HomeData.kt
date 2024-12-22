@@ -1,7 +1,7 @@
-package core.utilities.data
+package utilities.data
 
 import kotlinx.serialization.Serializable
-import core.utilities.enums.Locations
+import utilities.enums.Locations
 import kotlin.random.Random
 
 /**

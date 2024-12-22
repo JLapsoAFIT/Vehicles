@@ -1,7 +1,7 @@
-package core.utilities.data
+package utilities.data
 
 import kotlinx.serialization.Serializable
-import core.utilities.enums.Locations
+import utilities.enums.Locations
 import kotlin.random.Random
 
 /**
@@ -9,13 +9,13 @@ import kotlin.random.Random
  * @author Joshua A. Lapso
  *
  * @param size Width & Height (required)
- * @param bound_key Optional, default to unbound
+ * @param boundKey Optional, default to unbound
  * @param position Obstacle's center (required)
  */
 @Serializable
 data class ObstacleData(
     val size: List<Int>,
-    val bound_key: Int? = null,
+    val boundKey: Int? = null,
     override val position: List<Int> = listOf(
         Random.nextInt(Locations.DEFAULT.range[0], Locations.DEFAULT.range[1]),
         Random.nextInt(Locations.DEFAULT.range[0], Locations.DEFAULT.range[1])

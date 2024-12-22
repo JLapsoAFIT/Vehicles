@@ -3,13 +3,13 @@
   "vehicleType": "Boid",
   "vehicles": [
     {
-      "name": "BoidAgent",
+      "name": "boid.Boid",
       "position": [-5,-5],
       "drawScanLines": "true",
       "resource": "001"
     },
     {
-      "name": "BoidAgent",
+      "name": "boid.Boid",
       "position": [-3,-5],
       "drawScanLines": "true",
       "resource": "002"

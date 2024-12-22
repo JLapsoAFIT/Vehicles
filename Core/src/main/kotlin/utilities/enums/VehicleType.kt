@@ -1,4 +1,4 @@
-package core.utilities.enums
+package utilities.enums
 
 /**
  * An enum class for Vehicle Type strings
@@ -10,5 +10,6 @@ package core.utilities.enums
 enum class VehicleType(val type: String) {
     BRAITENBERG("Braitenberg"),
     BOID("Boid"),
-    ANT("Ant")
+    ANT("Ant"),
+    MIXED("Mixed")
 }

@@ -4,29 +4,36 @@
   "vehicles": [
     {
       "name": "RelNavAgent",
-      "position": [5, 5],
+      "position": [
+        5,
+        5
+      ],
       "orientation": 0,
       "drawScanLines": "false",
       "home": "CallieHome"
     }
   ],
-  "food": {
-    "timer": 200,
-    "locations": [
-      {
-        "position": [0,17],
-        "distribution": [0,0]
-      },
-      {
-        "position": [10,10],
-        "distribution": [1,1]
-      }
-    ]
-  },
+  "food":
+    {
+      "timer": 200,
+      "locations": [
+        {
+          "position": [0,17],
+          "distribution": [0,0]
+        },
+        {
+          "position": [10,10],
+          "distribution": [1,1]
+        }
+      ]
+    },
   "homes": [
     {
       "name": "CallieHome",
-      "position": [2,2],
+      "position": [
+        2,
+        2
+      ],
       "resource": 20
     }
   ]

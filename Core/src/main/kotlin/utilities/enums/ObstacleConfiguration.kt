@@ -1,4 +1,4 @@
-package core.utilities.enums
+package utilities.enums
 
 /**
  * An enum class for obstacle object configuration values
@@ -7,8 +7,8 @@ package core.utilities.enums
  * @param count The number of obstacle objects to create
  * @param size The size of the obstacle in meters
  */
-enum class ObstacleConfiguration(val count: Int, val size: List<Int>) {
-    DEFAULT(0, listOf(0,0)),
+enum class ObstacleConfiguration(val count: Int, val size: List<Int> = listOf()) {
+    DEFAULT(0),
     FIVE(5, listOf(2,4)),
     TEN(10, listOf(2,4)),
     TWENTYFIVE(25, listOf(2,4)),
