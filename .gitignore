@@ -16,3 +16,4 @@ settings.gradle.kts
 /Core/build/
 /Instance/build/
 /Courses/build/
+/.kotlin/

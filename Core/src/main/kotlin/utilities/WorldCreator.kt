@@ -33,11 +33,17 @@ class WorldCreator(){
      */
     private fun generateVehicles(vehicleConfiguration: VehicleConfiguration, homeConfiguration: HomeConfiguration): List<VehicleData> {
         val vehicleList = mutableListOf<VehicleData>()
-
+        //TODO: Currently one repeated class type or several as a list...
+        val vehicleNames = when (vehicleConfiguration.names.size) {
+            1 -> List(vehicleConfiguration.count) {
+                vehicleConfiguration.names.first()
+            }
+            else -> vehicleConfiguration.names
+        }
         //TODO: Currently each vehicle has its own home or they all share a home...
-        val vehicleHomes = when (homeConfiguration.names.size == vehicleConfiguration.names.size) {
+        val vehicleHomes = when (homeConfiguration.names.size == vehicleConfiguration.count) {
             true -> homeConfiguration.names
-            false -> List(vehicleConfiguration.names.size) {
+            false -> List(vehicleConfiguration.count) {
                 when(homeConfiguration.names.isEmpty()) {
                     true -> null
                     false -> homeConfiguration.names.first()
@@ -47,10 +53,11 @@ class WorldCreator(){
         for (vehicleInstance in 0 until vehicleConfiguration.count) {
             vehicleList.add(
                 VehicleData(
-                    name = vehicleConfiguration.names[vehicleInstance],
+                    name = vehicleNames[vehicleInstance],
                     logging = vehicleConfiguration.logging,
                     drawScanLines = vehicleConfiguration.drawScanLines,
                     home = vehicleHomes[vehicleInstance],
+                    resource = vehicleInstance.toString().padStart(3, '0')
                 )
             )
         }

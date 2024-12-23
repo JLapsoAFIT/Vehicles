@@ -7,9 +7,9 @@ package utilities.enums
  * @param type the string value for each Vehicle Type
  *
  */
-enum class VehicleType(val type: String) {
-    BRAITENBERG("Braitenberg"),
-    BOID("Boid"),
-    ANT("Ant"),
-    MIXED("Mixed")
+enum class VehicleType(val type: String, className: String) {
+    BRAITENBERG("Braitenberg", "braitenberg.Braitenberg"),
+    BOID("Boid", "boid.Boid"),
+    ANT("Ant", "ant.Ant"),
+    MIXED("Mixed", "mixed.Mixed")
 }

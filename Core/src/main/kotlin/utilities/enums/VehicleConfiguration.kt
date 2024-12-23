@@ -15,6 +15,7 @@ enum class VehicleConfiguration(
     val drawScanLines: Boolean = false,
     val logging: Boolean = false
 ) {
-    DEFAULT(2, listOf("Ant", "Ant"), 0, false, false),
+    DEFAULT(2, listOf("ant.Ant", "ant.Ant"), 0, false, false),
     RELNAV_TEST(2, listOf("RelNavAgent", "RelNavAgent")),
+    BOIDS(10, listOf("boid.Boid"), 0, true),
 }

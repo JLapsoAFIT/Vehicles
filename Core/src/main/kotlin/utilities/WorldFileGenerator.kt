@@ -29,7 +29,7 @@ object WorldFileGenerator {
      * 1) All configurations specified and strings for getting enum classes
      * java -jar worldGenerator.jar 12 Ant RELNAV_TEST DEFAULT DEFAULT RELNAV_TEST ONE
      *
-     * 2) Nothing sepicified and all defaults used.
+     * 2) Nothing specified and all defaults used.
      * java -jar worldGenerator.jar
      */
     @JvmStatic
