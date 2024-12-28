@@ -23,7 +23,7 @@
     <dependencies>
         <dependency>
             <groupId>edu.afit.vehicles</groupId>
-            <artifactId>Vehicles</artifactId>
+            <artifactId>Application</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
