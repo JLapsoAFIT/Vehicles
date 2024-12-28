@@ -15,7 +15,6 @@
   <modules>
     <module>Application</module>
     <module>Core</module>
-    <module>Courses</module>
   </modules>
 
   <properties>
