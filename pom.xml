@@ -13,7 +13,7 @@
   <url>http://www.example.com</url>
 
   <modules>
-    <module>Application</module>
+    <module>Simulator</module>
     <module>Core</module>
     <module>Utilities</module>
   </modules>

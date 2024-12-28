@@ -158,7 +158,7 @@ Several arbitration strategies are already present in the behaviorFactory.
 
 ##### Frame Reference
 
-![Vehicle Frames](developers/images/VehicleFrames.png)
+![Vehicle Frames](../developers/images/VehicleFrames.png)
 
 Black is World Frame. [0,0] is at the center.
 Green is Vehicle Frame. All SensedObjects are pre-transformed to be in this frame. Types include: "Home", "Obstacle", and "Food".
