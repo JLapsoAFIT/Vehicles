@@ -14,6 +14,10 @@ settings.gradle.kts
 /gradlew.bat
 /logs/
 /Core/build/
-/Instance/build/
+/Application/build/
 /Courses/build/
+/Utilities/build
 /.kotlin/
+/Application/build.kts.gradle
+/Core/build.gradle.kts
+/Utilities/build.gradle.kts
