@@ -3,35 +3,34 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>edu.afit.vehicles</groupId>
+        <artifactId>Vehicles</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-    <groupId>edu.afit.vehicles</groupId>
-    <artifactId>Courses</artifactId>
+    <artifactId>Utilities</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Courses</name>
+    <name>Utilities</name>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
+        <kotlin.version>2.1.0</kotlin.version>
+        <serialization.version>1.7.3</serialization.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>edu.afit.vehicles</groupId>
-            <artifactId>Application</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
         </dependency>
         <dependency>
-            <groupId>edu.afit.vehicles</groupId>
-            <artifactId>Core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.dyn4j</groupId>
-            <artifactId>dyn4j</artifactId>
-            <version>4.2.0</version>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-serialization-json</artifactId>
+            <version>${serialization.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -40,7 +39,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
@@ -63,22 +61,12 @@
                     <version>2.22.1</version>
                 </plugin>
                 <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <configuration>
-                        <outputDirectory>target</outputDirectory>
-                        <archive>
-                            <manifest>
-                                <mainClass>
-                                    vehicles.Vehicles
-                                </mainClass>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                    <version>3.0.2</version>
-                </plugin>
-                <plugin>
                     <artifactId>maven-install-plugin</artifactId>
                     <version>2.5.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
@@ -108,13 +96,39 @@
         </pluginManagement>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <source>src/main/java</source>
+                                <source>src/main/kotlin</source>
+                                <source>target/generated-sources/annotations</source>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <compilerPlugins>
+                        <plugin>kotlinx-serialization</plugin>
+                    </compilerPlugins>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-serialization</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
+
 </project>
